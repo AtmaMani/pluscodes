@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <title>Mapping with PyScript</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+  </head>
+  <body>
+
+    <py-config>
+      packages = ["geopandas", "folium"]
+    </py-config>
+
+    <py-script>
+    import geopandas
+    import folium
+    import os
+    print(os.getcwd())
+    webmap = folium.Map(location = [40, -97], zoom_start=5)
+    folium.GeoJson('http://atmamani.github.io/usa_pc_len4.geojson', name='usa_pc4', style_function=lambda x: {'fillColor': 'orange'}).add_to(webmap)
+    folium.GeoJson('http://atmamani.github.io/world_pc_len2.geojson', name='world_pc2', style_function=lambda x: {'fillColor': 'green'}).add_to(webmap)
+    display(webmap)
+    </py-script>
+
+    
+    <py-repl output="replOutput">
+    
+    </py-repl>
+	
+	<div id="replOutput"></div>
+	
+	<py-terminal></py-terminal>
+
+    
+  </body>
+</html>
