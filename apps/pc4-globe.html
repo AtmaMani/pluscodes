@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Globe USA Pluscodes</title>
+    <title>World Pluscodes 4</title>
     <link rel="stylesheet" href="https://js.arcgis.com/4.24/esri/themes/light/main.css" />
     <style>
         html,
@@ -48,15 +48,17 @@
 
             // Define the GeoJSON layer
             var pc4_layer = new GeoJSONLayer({
-                url: "../data_files/world_pc4.geojson",
+                // url: "../data_files/world_pc4.geojson",
+                url: "https://atmamani.github.io/files/world_pc4.geojson",
+                // url: "http://127.0.0.1:8000/files/world_pc4.geojson",
                 renderer: {
                     type: "simple",
                     symbol: {
                         type: "simple-fill",
-                        color: [0, 0, 0, 0.15],
+                        color: [0, 0, 0, 0],
                         outline: {
-                            color: "yellow",
-                            width: 2
+                            color: "brown",
+                            width: 1.25
                         }
                     }
                 },
