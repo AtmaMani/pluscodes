@@ -117,22 +117,51 @@
                 allPlaceholder: "PC4 or PC2",
                 includeDefaultSources: false,
                 sources: [
+                    // primary search source is the PC4 layer
                     {
                         layer: pc4_layer,
                         searchFields: ['trimmed_pl'],
                         displayField: 'trimmed_pl',
                         exactMatch: true,
                         outFields: ["trimmed_pl"],
-                        placeholder: "76VV"
+                        placeholder: "PC4 or PC2 eg:76VV"
 
+                    },
+                    // Add AGS World Geocoding Service as a search source
+                    {
+                        name: "ArcGIS World Geocoding Service",
+                        url: "https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer",
+                        singleLineFieldName: "SingleLine",
                     }
                 ]
             });
+
+            // Earlier , I had another search widget for geocoding. Now I have consolidated both into one.
+            // const geocodeWidget = new Search({
+            // view: view,
+            // allPlaceholder: "Address",
+            // sources: [{
+            //     name: "ArcGIS World Geocoding Service",
+            //     url: "https://geocode-api.arcgis.com/arcgis/rest/services/World/GeocodeServer", 
+            //     // locator: new Locator({ url: "https://geocode-api.arcgis.com/arcgis/rest/services/World/GeocodeServer" }),
+            //     singleLineFieldName: "SingleLine",
+            //     placeholder: "Search for Addresses",
+            //     // maxResults: 3,
+            //     // maxSuggestions: 6,
+            //     // suggestionsEnabled: true,
+            //     // minSuggestCharacters: 0
+            // }]
+        });
 
             // Add the search widget to the top right corner of the view
             view.ui.add(searchWidget, {
                 position: "top-right"
             });
+            // Commented out - earlier there were two search bars. Now they are consolidated into one.
+            // view.ui.add(geocodeWidget, {
+            //     position: "top-right",
+            //     index: 2
+            // });
 
             // Bind the browser find keyboard shortcut to the search widget
             document.addEventListener("keydown", function (event) {
